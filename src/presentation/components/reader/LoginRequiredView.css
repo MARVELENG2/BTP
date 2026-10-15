@@ -1,0 +1,51 @@
+.login-required {
+  max-width: 480px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top, 0px) + 20px) 24px 40px;
+  text-align: center;
+}
+
+.login-required__back {
+  display: block;
+  margin-bottom: 48px;
+  text-align: left;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-required h1 {
+  margin: 0 0 12px;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+}
+
+.login-required p {
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+.login-required__actions {
+  display: grid;
+  gap: 12px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.login-required__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border: 1.5px solid var(--color-green);
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-required__button--ghost {
+  background: #ffffff;
+  color: var(--color-green);
+}

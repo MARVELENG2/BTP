@@ -1,0 +1,351 @@
+.flip-reader {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.flip-reader__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.flip {
+  position: absolute;
+  inset: 8px 10px;
+  perspective: 1800px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.flip-reader__stage--clean .flip {
+  inset: 0;
+}
+
+.flip__layer {
+  position: absolute;
+  inset: 0;
+  background-color: var(--reader-bg);
+  color: var(--reader-text);
+  backface-visibility: hidden;
+  transform-origin: left center;
+}
+
+.flip__layer--classic {
+  border-radius: 6px 14px 14px 6px;
+  box-shadow:
+    -4px 6px 18px rgba(0, 0, 0, 0.2),
+    inset 6px 0 8px -6px rgba(0, 0, 0, 0.18);
+}
+
+.flip__layer--clean {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.flip__viewport {
+  overflow: hidden;
+}
+
+.flip__columns {
+  column-fill: auto;
+}
+
+/* keep the end-of-chapter block together, and headings with their text */
+.flip .chapter-body__end {
+  break-inside: avoid;
+}
+
+.flip .chapter-body__title {
+  break-after: avoid;
+}
+
+.flip .chapter-body__paragraph {
+  orphans: 2;
+  widows: 2;
+}
+
+/* page turn */
+.flip__layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flip__layer--under {
+  z-index: 1;
+}
+
+.flip__layer--turn-next {
+  z-index: 3;
+  animation: flip-next 0.48s ease-in forwards;
+}
+
+.flip__layer--turn-next::after {
+  animation: flip-shade-in 0.48s ease-in forwards;
+}
+
+.flip__layer--turn-prev {
+  z-index: 3;
+  animation: flip-prev 0.48s ease-out forwards;
+}
+
+.flip__layer--turn-prev::after {
+  animation: flip-shade-out 0.48s ease-out forwards;
+}
+
+@keyframes flip-next {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-90deg);
+  }
+}
+
+@keyframes flip-prev {
+  from {
+    transform: rotateY(-90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes flip-shade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes flip-shade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* footer with page number and buttons */
+.flip-reader__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px calc(env(safe-area-inset-bottom, 0px) + 12px);
+  color: var(--reader-chrome);
+  font-size: 0.78rem;
+}
+
+.flip-reader__nav {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(127, 127, 127, 0.15);
+  color: var(--reader-chrome);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.flip-reader__nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.flip-reader__status {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.flip-reader__progress {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.25);
+}
+
+.flip-reader__progress span {
+  display: block;
+  height: 100%;
+  background: var(--color-green);
+  transition: width 0.3s ease;
+}
+/* the page label is now a button that opens the page picker */
+button.flip-reader__status {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.flip-reader__status:disabled {
+  color: inherit;
+  cursor: default;
+}
+
+.flip-reader__status .flip-reader__progress {
+  display: block;
+  width: 100%;
+}
+
+.flip-reader__page-label {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+
+.flip-reader__status:disabled .flip-reader__page-label {
+  text-decoration: none;
+}
+
+/* page picker */
+.flip-jump {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.flip-jump__backdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+.flip-jump__sheet {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  width: min(100%, 480px);
+  padding: 20px 20px calc(env(safe-area-inset-bottom, 0px) + 20px);
+  border-radius: 22px 22px 0 0;
+  background: var(--reader-bg, #ffffff);
+  color: var(--reader-text, #222222);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
+  animation: flip-jump-up 0.25s ease;
+}
+
+.flip-jump__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.flip-jump__readout {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flip-jump__number {
+  width: 104px;
+  padding: 6px 8px;
+  border: 1.5px solid rgba(127, 127, 127, 0.6);
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.flip-jump__of {
+  opacity: 0.75;
+}
+
+.flip-jump__slider {
+  width: 100%;
+  accent-color: var(--color-green);
+}
+
+.flip-jump__hint {
+  margin: 0;
+  color: #d9534f;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.flip-jump__quick {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flip-jump__chip {
+  padding: 8px 18px;
+  border: 1.5px solid var(--color-green);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flip-jump__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.flip-jump__button {
+  flex: 1;
+  padding: 14px 0;
+  border: 1.5px solid var(--color-green);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flip-jump__button--primary {
+  background: var(--color-green);
+  color: #ffffff;
+}
+
+.flip-jump__button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@keyframes flip-jump-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-jump__sheet {
+    animation: none;
+  }
+}

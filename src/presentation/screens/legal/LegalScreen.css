@@ -1,0 +1,26 @@
+.legal {
+  padding: 24px 20px 0;
+  line-height: 1.65;
+}
+
+.legal h1 {
+  margin: 0 0 4px;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+}
+
+.legal__updated {
+  margin: 0 0 20px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.legal h2 {
+  margin: 24px 0 6px;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.legal p {
+  margin: 0;
+}

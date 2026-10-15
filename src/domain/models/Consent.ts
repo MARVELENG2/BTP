@@ -1,0 +1,1 @@
+export type CookieConsent = 'accepted' | 'declined'

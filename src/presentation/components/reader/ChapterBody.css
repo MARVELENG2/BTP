@@ -1,0 +1,31 @@
+.chapter-body {
+  font-family: var(--reader-font);
+  font-size: var(--reader-size);
+  line-height: var(--reader-line);
+}
+
+.chapter-body__number {
+  margin: 0 0 4px;
+  color: var(--color-green);
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chapter-body__title {
+  margin: 0 0 1.2em;
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+.chapter-body__paragraph {
+  margin: 0 0 1em;
+}
+
+.chapter-body__end {
+  margin-top: 2.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid rgba(127, 127, 127, 0.3);
+  text-align: center;
+}

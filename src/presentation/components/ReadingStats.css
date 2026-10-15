@@ -1,0 +1,138 @@
+.reading-stats {
+  display: grid;
+  gap: 28px;
+  margin: 28px 0 32px;
+  text-align: left;
+}
+
+.reading-stats h2 {
+  margin: 0 0 10px;
+  color: var(--color-brown);
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.reading-stats__loading {
+  margin: 28px 0;
+  color: var(--color-green);
+}
+
+.reading-stats__empty {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.reading-stats__streak {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--color-parchment);
+  box-shadow: 0 6px 16px rgba(122, 82, 48, 0.15);
+}
+
+.reading-stats__streak-number {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-green);
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.reading-stats__streak-text {
+  display: grid;
+  gap: 2px;
+}
+
+.reading-stats__streak-text span {
+  font-size: 0.9rem;
+}
+
+.reading-stats__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reading-stats__badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.reading-stats__books {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reading-stats__book {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-green-soft);
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.reading-stats__book-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.reading-stats__book-head span {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+}
+
+.reading-stats__bar {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-green-soft);
+}
+
+.reading-stats__bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--color-green);
+  transition: width 0.6s ease;
+}
+
+.reading-stats__continue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reading-stats__done {
+  color: var(--color-green);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.reading-stats__wait {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

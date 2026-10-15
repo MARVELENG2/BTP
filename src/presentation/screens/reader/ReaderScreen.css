@@ -1,0 +1,99 @@
+.reader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--reader-backdrop);
+  color: var(--reader-chrome);
+}
+
+.reader__message {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--color-green);
+}
+
+.reader__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px;
+}
+
+.reader__back,
+.reader__settings-button {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(127, 127, 127, 0.15);
+  color: var(--reader-chrome);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reader__heading {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  text-align: center;
+}
+
+.reader__book {
+  overflow: hidden;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reader__chapter {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.reader__scroll {
+  flex: 1;
+  padding: 4px 10px calc(env(safe-area-inset-bottom, 0px) + 16px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reader__page {
+  max-width: 640px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 28px 22px 40px;
+  background-color: var(--reader-bg);
+  color: var(--reader-text);
+}
+
+.reader__page--classic {
+  border-radius: 6px 14px 14px 6px;
+  box-shadow:
+    -4px 6px 18px rgba(0, 0, 0, 0.2),
+    inset 6px 0 8px -6px rgba(0, 0, 0, 0.18);
+}
+
+.reader__page--clean {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* background textures, drawn with CSS so they work offline */
+.reader-surface--paper {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+
+.reader-surface--parchment {
+  background-image:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 50%, rgba(122, 82, 48, 0.22) 100%),
+    repeating-linear-gradient(0deg, rgba(122, 82, 48, 0.035) 0 2px, transparent 2px 5px);
+}

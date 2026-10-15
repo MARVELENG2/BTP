@@ -1,0 +1,98 @@
+.admin-message {
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.admin {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.admin__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.admin__head h1 {
+  margin: 0;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+}
+
+.admin__add {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin__notice {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #eef6ee;
+}
+
+.admin__list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin__item {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid #e3e3e3;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.admin__info {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.admin__info span {
+  color: #666666;
+  font-size: 0.9rem;
+}
+
+.admin__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.admin__button {
+  padding: 8px 16px;
+  border: 1.5px solid var(--color-green);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-green);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.admin__button--danger {
+  border-color: #b3261e;
+  color: #b3261e;
+}
+.admin__head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

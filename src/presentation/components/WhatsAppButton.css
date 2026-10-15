@@ -1,0 +1,17 @@
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(46, 125, 79, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.whatsapp-button:active {
+  transform: scale(0.97);
+}

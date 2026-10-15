@@ -1,0 +1,31 @@
+:root {
+  --color-background: #ffffff;
+  --color-green: #2e7d4f;
+  --color-green-soft: #e8f3ec;
+  --color-brown: #7a5230;
+  --color-parchment: #f5ecd7;
+  --color-night: #1b1f1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-brown);
+  font-family: system-ui, sans-serif;
+}
+
+a {
+  color: var(--color-green);
+}
+
+button {
+  font-family: inherit;
+}

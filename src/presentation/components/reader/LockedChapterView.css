@@ -1,0 +1,80 @@
+.locked {
+  max-width: 480px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top, 0px) + 20px) 24px 40px;
+  text-align: center;
+}
+
+.locked__back {
+  display: block;
+  margin-bottom: 24px;
+  text-align: left;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.locked__preview {
+  position: relative;
+  margin: 0 auto 28px;
+  padding: 20px;
+  overflow: hidden;
+  text-align: left;
+  border-radius: 18px;
+  background: var(--color-parchment);
+}
+
+.locked__text {
+  margin: 0;
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  filter: blur(6px);
+  user-select: none;
+}
+
+.locked__lock {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-green);
+}
+
+.locked__lock span {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.locked h1 {
+  margin: 0 0 8px;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+}
+
+.locked__countdown {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.locked__countdown strong {
+  color: var(--color-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.locked__hint {
+  margin: 0 0 24px;
+  line-height: 1.6;
+}
+
+.locked__button {
+  display: inline-block;
+  margin-top: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}

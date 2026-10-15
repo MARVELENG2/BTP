@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#ffffff"/>
+  <g fill="#347548">
+    <path d="M82 57 L302 258 L302 370 L82 246 Z"/>
+    <path d="M518 57 L298 258 L298 370 L518 246 Z"/>
+  </g>
+  <g fill="#75451f">
+    <path d="M91 83 L302 253 L302 264 L91 107 Z"/>
+    <path d="M509 83 L298 253 L298 264 L509 107 Z"/>
+  </g>
+  <g fill="#347548">
+    <path d="M82 57 L302 258 L298 264 L82 92 Z"/>
+    <path d="M518 57 L298 258 L302 264 L518 92 Z"/>
+  </g>
+  <g fill="#75451f">
+    <path d="M91 83 L302 253 L298 258 L91 107 Z"/>
+    <path d="M509 83 L298 253 L302 258 L509 107 Z"/>
+  </g>
+  <rect x="279" y="248" width="42" height="135" fill="#ffffff"/>
+  <text x="300" y="220"
+        text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-weight="bold"
+        font-size="105"
+        letter-spacing="-7"
+        fill="#75451f">BTP</text>
+</svg>

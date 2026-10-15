@@ -1,0 +1,149 @@
+.edit-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.edit-sheet__backdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+
+.edit-sheet__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 480px);
+  max-height: 90dvh;
+  border-radius: 22px 22px 0 0;
+  background: #ffffff;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
+  animation: edit-sheet-up 0.28s ease;
+}
+
+.edit-sheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 8px;
+}
+
+.edit-sheet__head h2 {
+  margin: 0;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+}
+
+.edit-sheet__close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.edit-sheet__body {
+  display: grid;
+  gap: 18px;
+  padding: 8px 18px 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.edit-sheet__preview {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-sheet__field {
+  display: grid;
+  gap: 8px;
+}
+
+.edit-sheet__label {
+  font-weight: 600;
+}
+
+.edit-sheet__input {
+  padding: 12px 14px;
+  border: 1.5px solid #cfcfcf;
+  border-radius: 10px;
+  font: inherit;
+}
+
+.edit-sheet__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edit-sheet__option {
+  padding: 10px 16px;
+  border: 1.5px solid var(--color-green);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-green);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-sheet__option--active {
+  background: var(--color-green);
+  color: #ffffff;
+}
+
+.edit-sheet__error {
+  margin: 0;
+  color: #b3261e;
+  font-size: 0.85rem;
+}
+
+.edit-sheet__message {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #fdecea;
+  color: #b3261e;
+}
+
+.edit-sheet__footer {
+  padding: 12px 18px calc(env(safe-area-inset-bottom, 0px) + 16px);
+  border-top: 1px solid var(--color-green-soft);
+  background: #ffffff;
+}
+
+.edit-sheet__footer .progress-button {
+  width: 100%;
+}
+
+@keyframes edit-sheet-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edit-sheet__panel {
+    animation: none;
+  }
+}

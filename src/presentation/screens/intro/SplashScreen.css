@@ -1,0 +1,66 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+}
+
+.splash__glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 80%;
+  background: var(--color-white-soft);
+  animation: splash-glow 5s ease-out forwards;
+}
+
+.splash__logo {
+  position: relative;
+  animation:
+    splash-logo 1.2s cubic-bezier(0.5, 1.0, 0.5, 1) both,
+    splash-float 3s ease-in-out 1.2s infinite;
+}
+
+@keyframes splash-logo {
+  from {
+    opacity: 0;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(4s);
+  }
+}
+
+@keyframes splash-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes splash-glow {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  30% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.6;
+    transform: scale(1.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash__glow,
+  .splash__logo {
+    animation: none;
+  }
+}

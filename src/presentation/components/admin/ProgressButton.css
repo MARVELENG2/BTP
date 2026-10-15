@@ -1,0 +1,53 @@
+.progress-button {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.progress-button:disabled {
+  cursor: default;
+}
+
+.progress-button--busy {
+  background: #4f7a52;
+}
+
+.progress-button:disabled:not(.progress-button--busy) {
+  opacity: 0.5;
+}
+
+.progress-button__fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background: var(--color-green);
+  transition: width 0.25s ease;
+}
+
+.progress-button__label {
+  position: relative;
+  z-index: 1;
+}
+
+.progress-button--waiting .progress-button__fill {
+  width: 35%;
+  animation: progress-button-wait 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes progress-button-wait {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(185%);
+  }
+}

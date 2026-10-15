@@ -1,0 +1,38 @@
+.library {
+  padding: 24px 20px 0;
+}
+
+.library__loading {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-green);
+}
+
+.library h1 {
+  margin: 0;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+}
+
+.library__intro {
+  margin: 4px 0 24px;
+}
+
+.shelf {
+  margin-bottom: 28px;
+}
+
+.shelf__books {
+  display: grid;
+  gap: 14px;
+  padding: 0 8px;
+}
+
+.shelf__plank {
+  height: 14px;
+  margin-top: -2px;
+  border-radius: 3px;
+  background: linear-gradient(#a2703f, #7a5230);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}

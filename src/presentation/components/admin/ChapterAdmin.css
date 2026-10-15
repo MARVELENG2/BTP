@@ -1,0 +1,118 @@
+.chapter-form {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.chapter-form__back {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.chapter-form h1 {
+  margin: 0 0 8px;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+}
+
+.chapter-form__hint {
+  margin: 0 0 20px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.chapter-form__form {
+  display: grid;
+  gap: 16px;
+}
+
+.chapter-form__form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.chapter-form__form input,
+.chapter-form__form textarea {
+  padding: 12px 14px;
+  border: 1.5px solid #cfcfcf;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.chapter-form__text {
+  min-height: 50vh;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.chapter-form__meta {
+  margin: 0;
+  color: #666666;
+  font-size: 0.9rem;
+}
+
+.chapter-form__errors {
+  margin: 0 0 16px;
+  padding: 12px 14px 12px 32px;
+  border-radius: 10px;
+  background: #fdecea;
+  color: #b3261e;
+}
+
+.chapter-upload__pick {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.chapter-upload__list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapter-upload__item {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.chapter-upload__number {
+  color: var(--color-green);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.chapter-upload__fields {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.chapter-upload__fields span {
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+.chapter-upload__remove {
+  padding: 8px 14px;
+  border: 1.5px solid #b3261e;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #b3261e;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}

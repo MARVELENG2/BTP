@@ -1,0 +1,138 @@
+.auth {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 28px 22px 0;
+}
+
+.auth h1 {
+  margin: 0 0 6px;
+  color: var(--color-green);
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+}
+
+.auth__intro {
+  margin: 0 0 22px;
+  line-height: 1.5;
+}
+
+.auth__form {
+  display: grid;
+  gap: 18px;
+}
+
+.auth__field {
+  display: grid;
+  gap: 6px;
+}
+
+.auth__label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.auth__input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--color-green-soft);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--color-brown);
+  font-size: 1rem;
+}
+
+.auth__input:focus {
+  outline: none;
+  border-color: var(--color-green);
+}
+
+.auth__password-row {
+  position: relative;
+}
+
+.auth__password-row .auth__input {
+  padding-right: 76px;
+}
+
+.auth__toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: var(--color-green);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth__options {
+  display: grid;
+  gap: 8px;
+}
+
+.auth__option {
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-green-soft);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--color-brown);
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.auth__option--active {
+  border-color: var(--color-green);
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  font-weight: 700;
+}
+
+.auth__hint {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.auth__error {
+  margin: 0;
+  color: #b3261e;
+  font-size: 0.85rem;
+}
+
+.auth__message {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fdecea;
+  color: #b3261e;
+  font-size: 0.9rem;
+}
+
+.auth__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 24px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth__button:disabled {
+  opacity: 0.6;
+}
+
+.auth__switch {
+  margin-top: 22px;
+  text-align: center;
+}

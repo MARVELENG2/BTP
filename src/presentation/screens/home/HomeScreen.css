@@ -1,0 +1,82 @@
+.home {
+  padding-bottom: 8px;
+}
+
+.home__loading {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-green);
+}
+
+.home__hero {
+  position: relative;
+  margin: 16px;
+  padding: 28px 22px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(140deg, #2e7d4f, #1f5c3a);
+  color: #ffffff;
+}
+
+.home__hero::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.home__hero h1 {
+  position: relative;
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.home__hero p {
+  position: relative;
+  margin: 0 0 20px;
+  opacity: 0.9;
+}
+
+.home__hero .whatsapp-button {
+  position: relative;
+  background: #ffffff;
+  color: var(--color-green);
+}
+
+.home__section {
+  padding: 8px 20px 0;
+}
+
+.home__section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 12px 0 4px;
+}
+
+.home__section-head h2 {
+  margin: 0;
+  color: var(--color-brown);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.home__section-head a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home__featured {
+  display: flex;
+  gap: 20px;
+  padding: 12px 4px 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}

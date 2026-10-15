@@ -1,0 +1,23 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+.app-shell__main {
+  flex: 1;
+}
+
+.app-shell__footer {
+  padding: 24px 20px calc(88px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-size: 0.8rem;
+  color: #a08a74;
+}
+
+.app-shell__footer p {
+  margin: 4px 0;
+}
