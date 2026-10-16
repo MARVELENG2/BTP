@@ -1,5 +1,7 @@
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import type { OpenChapter } from '@/application/reader/getChapterForReading'
+import { countWords } from '@/domain/rules/readingCheck'
 import WhatsAppButton from '@/presentation/components/WhatsAppButton'
 import ReadMarker from './ReadMarker'
 import './ChapterEnd.css'
@@ -10,11 +12,12 @@ interface ChapterEndProps {
 
 export default function ChapterEnd({ access }: ChapterEndProps) {
   const { book, chapter, nextChapter, nextUnlocked, nextUnlockAt } = access
+  const wordCount = useMemo(() => countWords(chapter.content), [chapter.content])
 
   if (nextChapter === null) {
     return (
       <div className="chapter-end">
-        <ReadMarker bookId={book.id} chapterNumber={chapter.number} />
+        <ReadMarker bookId={book.id} chapterNumber={chapter.number} wordCount={wordCount} />
         <p className="chapter-end__title">You've finished {book.title}</p>
         <p className="chapter-end__text">What a read. Come and share your thoughts with everyone.</p>
         <div className="chapter-end__actions">
@@ -30,7 +33,7 @@ export default function ChapterEnd({ access }: ChapterEndProps) {
   if (nextUnlocked) {
     return (
       <div className="chapter-end">
-        <ReadMarker bookId={book.id} chapterNumber={chapter.number} />
+        <ReadMarker bookId={book.id} chapterNumber={chapter.number} wordCount={wordCount} />
         <p className="chapter-end__title">End of Chapter {chapter.number}</p>
         <div className="chapter-end__actions">
           <Link
@@ -57,7 +60,7 @@ export default function ChapterEnd({ access }: ChapterEndProps) {
 
   return (
     <div className="chapter-end">
-      <ReadMarker bookId={book.id} chapterNumber={chapter.number} />
+      <ReadMarker bookId={book.id} chapterNumber={chapter.number} wordCount={wordCount} />
       <p className="chapter-end__title">That's all for this week</p>
       <p className="chapter-end__text">
         Chapter {nextChapter} unlocks on {date}. Until then, come and talk about it on WhatsApp.

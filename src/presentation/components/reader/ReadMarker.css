@@ -1,0 +1,11 @@
+.read-status {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.read-status--done {
+  font-weight: 700;
+  opacity: 1;
+}
