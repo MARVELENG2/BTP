@@ -29,8 +29,15 @@ export default function ReadingStats() {
           <span>
             {streak.current === 0
               ? 'Finish a chapter this week to start one.'
-              : `Longest so far: ${weeks(streak.longest)}`}
+              : streak.completedThisWeek
+                ? `This week is done. Longest so far: ${weeks(streak.longest)}`
+                : `Finish a chapter this week to keep it going. Longest so far: ${weeks(streak.longest)}`}
           </span>
+          {streak.freezes > 0 && (
+            <span className="reading-stats__freeze">
+              {streak.freezes} streak {streak.freezes === 1 ? 'freeze' : 'freezes'} in reserve
+            </span>
+          )}
         </div>
       </section>
 

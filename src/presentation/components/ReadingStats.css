@@ -136,3 +136,7 @@
   font-size: 0.85rem;
   opacity: 0.8;
 }
+.reading-stats__freeze {
+  color: var(--color-green);
+  font-weight: 700;
+}
