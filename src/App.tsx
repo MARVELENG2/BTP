@@ -22,6 +22,7 @@ import AdminSettingsScreen from '@/presentation/screens/admin/AdminSettingsScree
 import DownloadsScreen from '@/presentation/screens/downloads/DownloadsScreen'
 import ProgressSync from '@/presentation/components/ProgressSync'
 import NotificationsScreen from '@/presentation/screens/notifications/NotificationsScreen'
+import OnboardingTour from '@/presentation/components/OnboardingTour'
 
 export default function App() {
   return (
@@ -61,6 +62,7 @@ export default function App() {
             <Route path="settings" element={<SettingsScreen />} />
                         <Route path="notifications" element={<NotificationsScreen />} />
             <Route path="books/:bookId/chapters/:chapterNumber" element={<ReaderScreen />} />
+            <Route path="tour" element={<OnboardingTour />} />
           </Routes>
         </BrowserRouter>
       </IntroGate>

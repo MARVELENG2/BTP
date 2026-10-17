@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import AnnouncementBanner from '@/presentation/components/AnnouncementBanner'
 import Logo from '@/presentation/components/Logo'
 import OfflineBanner from '@/presentation/components/OfflineBanner'
 import { appConfig } from '@/shared/config/appConfig'
@@ -30,6 +31,7 @@ export default function TopBar() {
         </Link>
       </header>
       <OfflineBanner />
+      <AnnouncementBanner />
     </>
   )
 }

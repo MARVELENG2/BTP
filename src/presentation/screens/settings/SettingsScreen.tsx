@@ -158,6 +158,26 @@ export default function SettingsScreen() {
               <Chevron />
             </Link>
           </li>
+                    <li>
+            <button
+              type="button"
+              className="settings__row"
+              onClick={() => window.dispatchEvent(new Event('btp:show-tour'))}
+            >
+              <span className="settings__icon">
+                <Icon>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </Icon>
+              </span>
+              <span className="settings__text">
+                <span className="settings__title">How the app works</span>
+                <span className="settings__sub">Replay the quick tour</span>
+              </span>
+              <Chevron />
+            </button>
+          </li>
         <ul className="settings__list">
           <li>
             <Link to="/privacy" className="settings__row">

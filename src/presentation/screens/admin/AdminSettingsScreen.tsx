@@ -1,16 +1,85 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
+import { loadAnnouncement, saveAnnouncement } from '@/application/settings/announcements'
 import {
   loadReminderSettings,
   loadWhatsAppSetting,
   saveReminderSettings,
   saveWhatsAppLink,
 } from '@/application/settings/appSettings'
+import { MAX_ANNOUNCEMENT_LENGTH, type Announcement } from '@/domain/rules/announcement'
 import type { ReminderSettings } from '@/domain/rules/reminderSettings'
 import ProgressButton from '@/presentation/components/admin/ProgressButton'
 import '@/presentation/components/admin/ChapterAdmin.css'
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+function AnnouncementForm({ initial }: { initial: Announcement }) {
+  const [text, setText] = useState(initial.text)
+  const [enabled, setEnabled] = useState(initial.enabled)
+  const [errors, setErrors] = useState<string[]>([])
+  const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
+
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+    if (saving) return
+    setSaving(true)
+    setErrors([])
+    setSaved(false)
+
+    const result = await saveAnnouncement(text, enabled)
+    if (result.ok) setSaved(true)
+    else setErrors(result.errors)
+    setSaving(false)
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="chapter-form__form">
+      <label>
+        Message
+        <textarea
+          rows={3}
+          maxLength={MAX_ANNOUNCEMENT_LENGTH}
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+          placeholder="For example: This week's discussion moves to Sunday at 8 p.m."
+        />
+      </label>
+      <p className="chapter-form__meta">
+        {text.length} / {MAX_ANNOUNCEMENT_LENGTH}
+      </p>
+
+      <label className="book-form__check">
+        <input
+          type="checkbox"
+          checked={enabled}
+          onChange={(event) => setEnabled(event.target.checked)}
+        />
+        Show this announcement to readers
+      </label>
+      <p className="chapter-form__meta">
+        Readers can dismiss it. Saving again, even with the same message, shows it to everyone once
+        more.
+      </p>
+
+      {saved && (
+        <p className="admin__notice">
+          {enabled ? 'Saved. Readers will see it at the top of the app.' : 'Saved. The announcement is off.'}
+        </p>
+      )}
+      {errors.length > 0 && (
+        <ul className="chapter-form__errors" role="alert">
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
+
+      <ProgressButton idleLabel="Save announcement" busy={saving} label="Saving…" />
+    </form>
+  )
+}
 
 function WhatsAppForm({ initial }: { initial: string }) {
   const [link, setLink] = useState(initial)
@@ -171,6 +240,7 @@ function ReminderForm({ initial }: { initial: ReminderSettings }) {
 interface Loaded {
   link: string
   reminders: ReminderSettings
+  announcement: Announcement
 }
 
 export default function AdminSettingsScreen() {
@@ -178,8 +248,8 @@ export default function AdminSettingsScreen() {
   const [loaded, setLoaded] = useState<Loaded | undefined>(undefined)
 
   useEffect(() => {
-    Promise.all([loadWhatsAppSetting(), loadReminderSettings()]).then(([link, reminders]) =>
-      setLoaded({ link, reminders }),
+    Promise.all([loadWhatsAppSetting(), loadReminderSettings(), loadAnnouncement()]).then(
+      ([link, reminders, announcement]) => setLoaded({ link, reminders, announcement }),
     )
   }, [])
 
@@ -192,7 +262,10 @@ export default function AdminSettingsScreen() {
       </Link>
       <h1>Settings</h1>
 
-      <h2 style={{ margin: '8px 0 12px' }}>WhatsApp group</h2>
+      <h2 style={{ margin: '8px 0 12px' }}>Announcement</h2>
+      <AnnouncementForm initial={loaded.announcement} />
+
+      <h2 style={{ margin: '32px 0 12px' }}>WhatsApp group</h2>
       <WhatsAppForm initial={loaded.link} />
 
       <h2 style={{ margin: '32px 0 12px' }}>Reminders</h2>
