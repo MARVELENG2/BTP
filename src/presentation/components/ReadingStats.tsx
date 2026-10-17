@@ -7,6 +7,24 @@ function weeks(count: number): string {
   return `${count} ${count === 1 ? 'week' : 'weeks'}`
 }
 
+function Flame({ filled }: { filled: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill={filled ? 'currentColor' : 'none'}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+    </svg>
+  )
+}
+
 export default function ReadingStats() {
   // undefined = still loading, null = not signed in
   const [summary, setSummary] = useState<ReadingSummary | null | undefined>(undefined)
@@ -18,12 +36,15 @@ export default function ReadingStats() {
   if (summary === undefined) return <p className="reading-stats__loading">Loading your progress…</p>
   if (summary === null) return null
 
-  const { streak, badges, books } = summary
+  const { streak, badges, books, week, nextMilestone } = summary
 
   return (
     <div className="reading-stats">
       <section className="reading-stats__streak">
-        <span className="reading-stats__streak-number">{streak.current}</span>
+        <span className="reading-stats__streak-number">
+          <Flame filled={streak.completedThisWeek} />
+          {streak.current}
+        </span>
         <div className="reading-stats__streak-text">
           <strong>Week streak</strong>
           <span>
@@ -38,7 +59,38 @@ export default function ReadingStats() {
               {streak.freezes} streak {streak.freezes === 1 ? 'freeze' : 'freezes'} in reserve
             </span>
           )}
+          {nextMilestone && (
+            <span className="reading-stats__next">
+              {weeks(nextMilestone.remaining)} to go for the {nextMilestone.weeks}-week badge
+            </span>
+          )}
         </div>
+      </section>
+
+      <section>
+        <h2>This week</h2>
+        <ol className="reading-stats__week">
+          {week.map((day) => {
+            const classes = ['reading-stats__day']
+            if (day.hasRead) classes.push('reading-stats__day--read')
+            if (day.isToday) classes.push('reading-stats__day--today')
+            if (day.isFuture) classes.push('reading-stats__day--future')
+
+            return (
+              <li
+                key={day.label}
+                className={classes.join(' ')}
+                aria-label={`${day.label} ${day.date}: ${day.hasRead ? 'finished a chapter' : day.isFuture ? 'still to come' : 'no reading'}`}
+              >
+                <span className="reading-stats__day-label">{day.label}</span>
+                <span className="reading-stats__day-icon">
+                  {day.hasRead ? <Flame filled /> : <span className="reading-stats__day-dot" />}
+                </span>
+                <span className="reading-stats__day-date">{day.date}</span>
+              </li>
+            )
+          })}
+        </ol>
       </section>
 
       <section>

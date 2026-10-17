@@ -6,6 +6,12 @@ import {
   summarizeBookProgress,
 } from '@/domain/rules/progress'
 import { calculateStreak, type StreakResult } from '@/domain/rules/streak'
+import {
+  getNextStreakMilestone,
+  getStreakBadges,
+  type StreakMilestone,
+} from '@/domain/rules/streakBadges'
+import { getWeekCalendar, type CalendarDay } from '@/domain/rules/weekCalendar'
 import { isSignedIn } from '@/infrastructure/auth/sessionRepository'
 import { fetchBooks } from '@/infrastructure/database/bookRepository'
 import { fetchMyReads, recordChapterRead } from '@/infrastructure/database/progressRepository'
@@ -28,6 +34,8 @@ export interface ReadingSummary {
   streak: StreakResult
   badges: Badge[]
   books: BookProgressItem[]
+  week: CalendarDay[]
+  nextMilestone: StreakMilestone | null
 }
 
 function isOnline(): boolean {
@@ -118,9 +126,14 @@ export async function getReadingSummary(now: Date = new Date()): Promise<Reading
     .filter((item) => item.chaptersRead > 0)
     .sort((a, b) => Number(a.completed) - Number(b.completed))
 
+  const streak = calculateStreak(getCompletedWeeks(reads), now)
+  const finishedBooks = items.filter((item) => item.completed).map((item) => item.book)
+
   return {
-    streak: calculateStreak(getCompletedWeeks(reads), now),
-    badges: getEarnedBadges(items.filter((item) => item.completed).map((item) => item.book)),
+    streak,
+    badges: [...getEarnedBadges(finishedBooks), ...getStreakBadges(streak.longest)],
     books: started,
+    week: getWeekCalendar(reads, now),
+    nextMilestone: getNextStreakMilestone(streak.longest, streak.current),
   }
 }
